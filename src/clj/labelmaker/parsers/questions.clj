@@ -22,5 +22,4 @@
   (let [qfile (trim (slurp "questions.txt"))
         questions (split qfile #"\n\n")
         qparts (mapv parse-1q questions)]
-    (println qparts)
-    ))
+    qparts))
