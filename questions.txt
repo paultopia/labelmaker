@@ -1,0 +1,12 @@
+# question
+Who is the fluffiest cat?
+# answertype
+multiplechoice
+# answeropts
+- Leonidas
+- Some other cat
+
+# question
+Is the fluffiest cat the best cat?
+# answertype
+tf
