@@ -19,7 +19,8 @@
       #'labelmaker.config/env
       #'labelmaker.db.core/*db*)
     (migrations/migrate ["migrate"] (select-keys env [:database-url]))
-    (f)))
+    (f)
+    (empty-docs!!)))
 
 (deftest test-documents
   (jdbc/with-db-transaction [t-conn *db*]
@@ -30,4 +31,4 @@
     (is (= "this is a document"
            (:document (first (db/get-coding-queue!)))))))
 
-(empty-docs!!)
+
