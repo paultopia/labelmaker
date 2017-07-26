@@ -7,7 +7,8 @@
             [cider.nrepl :refer [cider-nrepl-handler]]
             [clojure.tools.cli :refer [parse-opts]]
             [clojure.tools.logging :as log]
-            [mount.core :as mount])
+            [mount.core :as mount]
+            [labelmaker.db.core])
   (:gen-class))
 
 (def cli-options

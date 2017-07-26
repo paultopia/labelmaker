@@ -25,8 +25,8 @@ VALUES (:question)
 
 -- :name create-document! :! :n
 -- :doc creates a new document
-INSERT INTO documents (text)
-VALUES (:text)
+INSERT INTO documents (document)
+VALUES (:document)
 
 -- :name update-document! :! :n
 -- :doc update a document
@@ -39,15 +39,22 @@ WHERE did = :did
 INSERT INTO responses (qid did userid answer)
 VALUES (:qid :did :userid :answer)
 
--- :name get-full-responses! :? :n
+-- :name get-full-responses! :? :*
 -- :doc get all the data
 SELECT *
 FROM responses JOIN documents
 ON did = did
 
--- :name get-codebook! :? :n
+-- :name get-codebook! :? :*
 -- :doc get all the question info
 SELECT *
 FROM questions
+
+-- :name get-coding-queue! :? :*
+-- :doc get 20 docs to queue up for coding
+SELECT * FROM documents
+WHERE entered = false
+ORDER BY did
+LIMIT 20
 
 -- to add: queries to get documents including flagged and unentered.
