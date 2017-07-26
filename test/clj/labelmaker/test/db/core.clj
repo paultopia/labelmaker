@@ -23,12 +23,10 @@
     (empty-docs!!)))
 
 (deftest test-documents
-  (jdbc/with-db-transaction [t-conn *db*]
-    (jdbc/db-set-rollback-only! t-conn)
-    (is (= 1 (db/create-document!
-               {:document "this is a document"})))
+  (is (= 1 (db/create-document!
+             {:document "this is a document"})))
 
-    (is (= "this is a document"
-           (:document (first (db/get-coding-queue!)))))))
+   (is (= "this is a document"
+          (:document (first (db/get-coding-queue!))))))
 
 
