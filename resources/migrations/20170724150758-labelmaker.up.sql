@@ -7,23 +7,29 @@ CREATE TABLE questions
  preemptive BOOLEAN,
  highlight BOOLEAN,
  answertype anstype,
- ansoptions TEXT);
+ ansoptions TEXT,
+ dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 
 CREATE TABLE documents
 (did SERIAL PRIMARY KEY,
  document TEXT,
  entered BOOLEAN DEFAULT FALSE,
  flagged BOOLEAN DEFAULT FALSE,
- ambiguous BOOLEAN DEFAULT FALSE);
+ ambiguous BOOLEAN DEFAULT FALSE,
+ dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 
 CREATE TABLE responses
 (id SERIAL PRIMARY KEY,
  qid INTEGER,
  did INTEGER,
  userid VARCHAR(20),
- answer TEXT);
+ answer TEXT,
+ dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ hasreentry BOOLEAN DEFAULT FALSE,
+ isreentry BOOLEAN DEFAULT FALSE);
 
 CREATE TABLE users
 (username VARCHAR(20) PRIMARY KEY,
  password VARCHAR(20),
- isadmin BOOLEAN);
+ isadmin BOOLEAN,
+ dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
