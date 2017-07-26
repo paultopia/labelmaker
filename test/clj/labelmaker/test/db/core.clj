@@ -1,10 +1,16 @@
 (ns labelmaker.test.db.core
   (:require [labelmaker.db.core :refer [*db*] :as db]
+            [hugsql.core :as hsq]
             [luminus-migrations.core :as migrations]
             [clojure.test :refer :all]
             [clojure.java.jdbc :as jdbc]
             [labelmaker.config :refer [env]]
             [mount.core :as mount]))
+
+(defn empty-docs!! []
+  (try (hsq/db-run db/*db* "DELETE FROM documents;")
+       (catch Exception e
+         (str "swallowed exception: " (.getMessage e)))))
 
 (use-fixtures
   :once
@@ -15,22 +21,13 @@
     (migrations/migrate ["migrate"] (select-keys env [:database-url]))
     (f)))
 
-(deftest test-users
+(deftest test-documents
   (jdbc/with-db-transaction [t-conn *db*]
     (jdbc/db-set-rollback-only! t-conn)
-    (is (= 1 (db/create-user!
-               t-conn
-               {:id         "1"
-                :first_name "Sam"
-                :last_name  "Smith"
-                :email      "sam.smith@example.com"
-                :pass       "pass"})))
-    (is (= {:id         "1"
-            :first_name "Sam"
-            :last_name  "Smith"
-            :email      "sam.smith@example.com"
-            :pass       "pass"
-            :admin      nil
-            :last_login nil
-            :is_active  nil}
-           (db/get-user t-conn {:id "1"})))))
+    (is (= 1 (db/create-document!
+               {:document "this is a document"})))
+
+    (is (= "this is a document"
+           (:document (first (db/get-coding-queue!)))))))
+
+(empty-docs!!)
