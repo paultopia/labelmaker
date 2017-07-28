@@ -19,7 +19,7 @@
                  [metosin/muuntaja "0.3.1"]
                  [metosin/ring-http-response "0.9.0"]
                  [mount "0.1.11"]
-                 [org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojure "1.9.0-alpha17"]
                  [org.clojure/clojurescript "1.9.671" :scope "provided"]
                  [org.clojure/tools.cli "0.3.5"]
                  [org.clojure/tools.logging "0.4.0"]
@@ -33,7 +33,10 @@
                  [ring/ring-core "1.6.2"]
                  [ring/ring-defaults "0.3.0"]
                  [secretary "1.2.3"]
-                 [selmer "1.10.9"]]
+                 [selmer "1.10.9"]
+                 [com.novemberain/langohr "3.6.1"]
+                 [org.clojure/data.json "0.2.6"]
+                 [org.clojure/core.async "0.3.443"]]
 
   :min-lein-version "2.0.0"
 
