@@ -13,9 +13,9 @@
     (ev/listen socket
                #js [WebSocket.EventType.CLOSED
                     WebSocket.EventType.ERROR
-                    WebSocket.EventType.MESSAGE
                     WebSocket.EventType.OPENED]
                #(.log js/console (.-type %)))
+    (ev/listen socket WebSocket.EventType.MESSAGE  #(.log js/console (.-message %)))
     (.open socket ws-uri)
     socket))
 
