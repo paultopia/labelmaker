@@ -1,15 +1,11 @@
 (ns labelmaker.db.management
   (:require [labelmaker.db.core :as db]
             [hugsql.core :as hsq]))
+;; functions to add docs, questions, users, etc. go here.
+;; maybe separate namespace to get results and codebook out
+;; and definitely separate namespace for data entry functions.
 
-(defn empty-docs!! []
-  (try (hsq/db-run db/*db* "DELETE FROM documents;")
-       (catch Exception e)))
 
-(defn add-stub-docs []
-  (do
-    (db/create-document! {:document "this is the first document"})
-    (db/create-document! {:document "this is the second document"})))
 
-(defn get-docs-queue []
+(defn get-coding-queue! []
   (db/get-coding-queue!))

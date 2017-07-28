@@ -1,7 +1,7 @@
 (defproject labelmaker "0.1.0-SNAPSHOT"
 
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Data entry application for documents."
+  :url "https://github.com/paultopia/labelmaker"
 
   :dependencies [[buddy "1.3.0"]
                  [cider/cider-nrepl "0.15.0-SNAPSHOT"]
