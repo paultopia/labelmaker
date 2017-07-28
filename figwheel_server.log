@@ -1,0 +1,47 @@
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.076 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.676 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.18 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.899 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.539 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.349 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 0.654 seconds.[0m
+[36m----  Could not Analyze  src/cljs/labelmaker/ws.cljs   line:6  column:1  ----[0m
+
+  [1mParameter declaration "let" should be a vector[0m
+
+  [36m4[0m  [36m  (:require [goog.events :as ev]))[0m
+  [36m5[0m  [36m[0m
+  [33m6[0m  [1m(defn ws-uri[0m
+  [0m [0m  [33m^--- Parameter declaration "let" should be a vector[0m
+  [36m7[0m  [36m  (let [doc-uri (.-location js/window)][0m
+  [36m8[0m  [36m    (str "ws://" (.-host doc-uri) (.-pathname doc-uri) "ws")))[0m
+
+[36m----  Analysis Error : Please see src/cljs/labelmaker/ws.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.28 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.137 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.861 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js

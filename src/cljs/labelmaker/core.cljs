@@ -6,8 +6,15 @@
             [goog.history.EventType :as HistoryEventType]
             [markdown.core :refer [md->html]]
             [labelmaker.ajax :refer [load-interceptors!]]
-            [ajax.core :refer [GET POST]])
+            [ajax.core :refer [GET POST]]
+            [labelmaker.ws :refer [setup-websocket send-message]])
   (:import goog.History))
+
+(def socket (setup-websocket))
+
+(defn clickme []
+  [:p
+   [:button {:on-click #(send-message socket "FOO!!")} "click me"]])
 
 (defn nav-link [uri title page collapsed?]
   [:li.nav-item
@@ -37,6 +44,9 @@
 
 (defn home-page []
   [:div.container
+   [:div.row>div.col-sm-12
+    [:p "foo"]
+    [clickme]]
    (when-let [docs (session/get :docs)]
      [:div.row>div.col-sm-12
       [:div {:dangerouslySetInnerHTML
