@@ -236,3 +236,143 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.72 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:18  column:20  ----[0m
+
+  [1mWrong number of args (0) passed to reagent.core/atom[0m
+
+  [36m14[0m  [36m  [:div[0m
+  [36m15[0m  [36m   [:button "foo"]])[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(defn highlightable-document [hatom content][0m
+  [33m18[0m  [1m  (let [showbutton (r/atom)][0m
+  [0m  [0m  [33m                   ^--- Wrong number of args (0) passed to reagent.core/atom[0m
+  [36m19[0m  [36m      [:div[0m
+  [36m20[0m  [36m       [:p {:on-mouse-up #(get-selected hatom)[0m
+  [36m21[0m  [36m            :on-touch-end #(get-selected hatom)} content][0m
+  [36m22[0m  [36m       [submission-button showbutton]]))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.36 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.01 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:14  column:28  ----[0m
+
+  [1mUse of undeclared Var labelmaker.documents.core/showbutton[0m
+
+  [36m10[0m  [36m    (swap! hatom conj seltext)[0m
+  [36m11[0m  [36m    (.log js/console (get-last-real-selection hatom))))[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(defn submission-button [visatom][0m
+  [33m14[0m  [1m  [:div {:style {:display @showbutton}}[0m
+  [0m  [0m  [33m                           ^--- Use of undeclared Var labelmaker.documents.core/showbutton[0m
+  [36m15[0m  [36m   [:button "foo"]])[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(defn highlightable-document [hatom content][0m
+  [36m18[0m  [36m  (let [showbutton (r/atom "none")][0m
+  [36m19[0m  [36m      [:div[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.631 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.923 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:22  column:28  ----[0m
+
+  [1mWrong number of args (1) passed to labelmaker.documents.core/get-selected[0m
+
+  [36m18[0m  [36m(defn highlightable-document [hatom content][0m
+  [36m19[0m  [36m  (let [showbutton (r/atom "none")][0m
+  [36m20[0m  [36m      [:div[0m
+  [36m21[0m  [36m       [:p {:on-mouse-up #(get-selected hatom showbutton)[0m
+  [33m22[0m  [1m            :on-touch-end #(get-selected hatom)} content][0m
+  [0m  [0m  [33m                           ^--- Wrong number of args (1) passed to labelmaker.documents.core/get-selected[0m
+  [36m23[0m  [36m       [submission-button showbutton]]))[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.23 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.393 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.051 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.615 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.612 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:17  column:8  ----[0m
+
+  [1mUse of undeclared Var labelmaker.documents.core/boo[0m
+
+  [36m14[0m  [36m(defn submission-button [hatom visatom][0m
+  [36m15[0m  [36m  [:div {:class "alert alert-success" :style {:display @visatom}}[0m
+  [36m16[0m  [36m   [:p "You selected the following text. If that's correct, hit submit below, otherwise hit cancel."][0m
+  [33m17[0m  [1m   [:p boo][0m
+  [0m  [0m  [33m       ^--- Use of undeclared Var labelmaker.documents.core/boo[0m
+  [36m18[0m  [36m   [:button "foo"]])[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn highlightable-document [hatom content][0m
+  [36m21[0m  [36m  (let [visatom (r/atom "none")][0m
+  [36m22[0m  [36m      [:div[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.561 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.495 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.402 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.656 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.684 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.564 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.574 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.302 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.474 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.533 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.559 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.525 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.473 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.451 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.437 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.701 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.571 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
