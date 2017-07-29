@@ -23,8 +23,7 @@
       (>! inchan {:socket this-socket :message message}))))
 
 (defn dispatch-outgoing [this-socket message]
-  (doseq [socket @sockets]
-    (async/send! socket (to-json {:word (:word message) :num (inc (:num message))}))))
+    (async/send! this-socket (to-json {:word (:word message) :num (inc (:num message))})))
 
 (defn listen! [callback]
   (thread

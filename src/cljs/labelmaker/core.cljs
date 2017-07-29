@@ -17,7 +17,11 @@
 
 (defn clickme []
   [:p
-   [:button {:on-click #(send-ws! {:word "YO!!" :num 1})} "click me"]])
+   [:button {:on-click #(send-ws! {:word "YO!!" :num 1})} "send 1"]])
+
+(defn clickme2 []
+  [:p
+   [:button {:on-click #(send-ws! {:word "YO!!" :num 2})} "send 2"]])
 
 (defn nav-link [uri title page collapsed?]
   [:li.nav-item
@@ -48,8 +52,8 @@
 (defn home-page []
   [:div.container
    [:div.row>div.col-sm-12
-    [:p "foo"]
-    [clickme]]
+    [clickme]
+    [clickme2]]
    (when-let [docs (session/get :docs)]
      [:div.row>div.col-sm-12
       [:div {:dangerouslySetInnerHTML
