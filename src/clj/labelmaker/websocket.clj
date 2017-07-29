@@ -22,9 +22,6 @@
     (go
       (>! inchan {:socket this-socket :message message}))))
 
-(defn dispatch-outgoing [this-socket message]
-    (async/send! this-socket (to-json {:word (:word message) :num (inc (:num message))})))
-
 (defn listen! [callback]
   (thread
     (loop []
@@ -32,14 +29,20 @@
         (callback socket message))
       (recur))))
 
-(listen! dispatch-outgoing)
-
 (def websocket-callbacks
   "WebSocket callback functions"
   {:on-open connect!
    :on-close disconnect!
    :on-message take-incoming})
 
-(defn ws-handler [request]  
+(defn ws-handler [request]
   (async/as-channel request websocket-callbacks))
+
+(defn test-say-back [this-socket message]
+  (async/send! this-socket (to-json {:word (:word message) :num (inc (:num message))})))
+
+(defn websocket-handler! [callback]
+  (do
+    (listen! callback)
+    ws-handler))
 
