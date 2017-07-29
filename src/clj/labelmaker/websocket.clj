@@ -41,7 +41,9 @@
 (defn test-say-back [this-socket message]
   (async/send! this-socket (to-json {:word (:word message) :num (inc (:num message))})))
 
-(defn websocket-handler! [callback]
+(defn websocket-handler!
+"the callback function will take the socket identifier that the message came from and the message.  that's the place where I'll figure out what type of message (with a multimethod?), shove data in db, and acknowledge success."
+  [callback]
   (do
     (listen! callback)
     ws-handler))
