@@ -1,19 +1,23 @@
 (ns labelmaker.websocket
-  (:require [immutant.web.async :as async]))
+  (:require [immutant.web.async :as async]
+            [clojure.data.json :as json]))
 
-(defonce channels (atom #{}))
+(defn to-json [data] (json/write-str data))
+(defn from-json [data] (json/read-str data :key-fn keyword))
 
-(defn connect! [channel]
-  (swap! channels conj channel))
 
-(defn disconnect! [channel {:keys [code reason]}]
-  (swap! channels #(remove #{channel} %)))
+(defonce sockets (atom #{}))
 
-(defn notify-clients! [thischan msg]
-  (do
-    (spit "rec.txt" (str thischan "\n" msg))
-    (doseq [channel @channels]
-      (async/send! channel (str thischan " SENT " msg)))))
+(defn connect! [socket]
+  (swap! sockets conj socket))
+
+(defn disconnect! [socket {:keys [code reason]}]
+  (swap! sockets #(remove #{socket} %)))
+
+(defn notify-clients! [this-socket msg]
+  (let [message (from-json msg)]
+    (doseq [socket @sockets]
+      (async/send! socket (to-json {:word (:word message) :num (inc (:num message))})))))
 
 (def websocket-callbacks
   "WebSocket callback functions"

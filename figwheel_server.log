@@ -117,3 +117,35 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.686 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.981 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/ws.cljs   line:19  column:40  ----[0m
+
+  [1mWrong number of args (3) passed to cljs.core/clj->js[0m
+
+  [36m15[0m  [36m    (str "ws://" (.-host doc-uri) (.-pathname doc-uri) "ws")))[0m
+  [36m16[0m  [36m[0m
+  [36m17[0m  [36m(def jsonreader (t/reader :json))[0m
+  [36m18[0m  [36m(defn to-json [data] (.stringify js/JSON (clj->js data)))[0m
+  [33m19[0m  [1m(defn from-json [data] (.parse js/JSON (clj->js data :keywordize-keys true)))[0m
+  [0m  [0m  [33m                                       ^--- Wrong number of args (3) passed to cljs.core/clj->js[0m
+  [36m20[0m  [36m[0m
+  [36m21[0m  [36m;; architectural note: clients will send individual question answers back over websockets to be immediately entered, and when they've answered all questions, they'll send a "done" message with it.  Only on getting done message will server send another document.  server will also send ack messages, and if not received client will need to hold onto the data and try again.[0m
+  [36m22[0m  [36m[0m
+  [36m23[0m  [36m(defn say [outchan message][0m
+  [36m24[0m  [36m  (go[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/ws.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.851 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.809 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.604 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/ws.js

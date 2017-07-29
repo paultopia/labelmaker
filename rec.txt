@@ -1,2 +1,0 @@
-org.projectodd.wunderboss.web.undertow.async.websocket.UndertowWebsocketChannel@25e59cef
-FOO!!

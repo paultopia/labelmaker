@@ -17,7 +17,7 @@
 
 (defn clickme []
   [:p
-   [:button {:on-click #(send-ws! "FOO!!")} "click me"]])
+   [:button {:on-click #(send-ws! {:word "YO!!" :num 1})} "click me"]])
 
 (defn nav-link [uri title page collapsed?]
   [:li.nav-item
