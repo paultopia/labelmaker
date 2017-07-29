@@ -7,14 +7,17 @@
             [markdown.core :refer [md->html]]
             [labelmaker.ajax :refer [load-interceptors!]]
             [ajax.core :refer [GET POST]]
-            [labelmaker.ws :refer [setup-websocket send-message]])
+            [labelmaker.ws :refer [websockets-comlink!]])
   (:import goog.History))
 
-(def socket (setup-websocket))
+(defn log-messages [message]
+  (.log js/console message))
+
+(def send-ws! (websockets-comlink! log-messages)) ;sets up a sender + passes the logger to a listener.
 
 (defn clickme []
   [:p
-   [:button {:on-click #(send-message socket "FOO!!")} "click me"]])
+   [:button {:on-click #(send-ws! "FOO!!")} "click me"]])
 
 (defn nav-link [uri title page collapsed?]
   [:li.nav-item
