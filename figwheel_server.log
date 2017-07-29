@@ -167,3 +167,72 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.165 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:15  column:37  ----[0m
+
+  [1mUse of undeclared Var labelmaker.documents.core/hilite-atom[0m
+
+  [36m11[0m  [36m    (.log js/console (get-last-real-selection @hilite-atom))))[0m
+  [36m12[0m  [36m[0m
+  [36m13[0m  [36m(defn highlightable-document [hlite-atom content][0m
+  [36m14[0m  [36m  [:div[0m
+  [33m15[0m  [1m   [:p {:on-mouse-up #(get-selected hilite-atom)[0m
+  [0m  [0m  [33m                                    ^--- Use of undeclared Var labelmaker.documents.core/hilite-atom[0m
+  [36m16[0m  [36m        :on-touch-end #(get-selected hilite-atom)} content]])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:16  column:38  ----[0m
+
+  [1mUse of undeclared Var labelmaker.documents.core/hilite-atom[0m
+
+  [36m13[0m  [36m(defn highlightable-document [hlite-atom content][0m
+  [36m14[0m  [36m  [:div[0m
+  [36m15[0m  [36m   [:p {:on-mouse-up #(get-selected hilite-atom)[0m
+  [33m16[0m  [1m        :on-touch-end #(get-selected hilite-atom)} content]])[0m
+  [0m  [0m  [33m                                     ^--- Use of undeclared Var labelmaker.documents.core/hilite-atom[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 10.994 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:17  column:37  ----[0m
+
+  [1mUse of undeclared Var labelmaker.documents.core/hilite-atom[0m
+
+  [36m13[0m  [36m    ))[0m
+  [36m14[0m  [36m[0m
+  [36m15[0m  [36m(defn highlightable-document [hlite-atom content][0m
+  [36m16[0m  [36m  [:div[0m
+  [33m17[0m  [1m   [:p {:on-mouse-up #(get-selected hilite-atom)[0m
+  [0m  [0m  [33m                                    ^--- Use of undeclared Var labelmaker.documents.core/hilite-atom[0m
+  [36m18[0m  [36m        :on-touch-end #(get-selected hilite-atom)} content]])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:18  column:38  ----[0m
+
+  [1mUse of undeclared Var labelmaker.documents.core/hilite-atom[0m
+
+  [36m15[0m  [36m(defn highlightable-document [hlite-atom content][0m
+  [36m16[0m  [36m  [:div[0m
+  [36m17[0m  [36m   [:p {:on-mouse-up #(get-selected hilite-atom)[0m
+  [33m18[0m  [1m        :on-touch-end #(get-selected hilite-atom)} content]])[0m
+  [0m  [0m  [33m                                     ^--- Use of undeclared Var labelmaker.documents.core/hilite-atom[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.886 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.437 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.468 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.575 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.72 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js

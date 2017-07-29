@@ -7,7 +7,8 @@
             [markdown.core :refer [md->html]]
             [labelmaker.ajax :refer [load-interceptors!]]
             [ajax.core :refer [GET POST]]
-            [labelmaker.ws :refer [websockets-comlink!]])
+            [labelmaker.ws :refer [websockets-comlink!]]
+            [labelmaker.documents.core :refer [highlightable-document]])
   (:import goog.History))
 
 (defn log-messages [message]
@@ -49,11 +50,14 @@
     [:div.col-md-12
      [:img {:src (str js/context "/img/warning_clojure.png")}]]]])
 
+(def experimental-highlight-atom (r/atom []))
+
 (defn home-page []
   [:div.container
    [:div.row>div.col-sm-12
     [clickme]
     [clickme2]]
+   [highlightable-document experimental-highlight-atom "this is some text that is a test."]
    (when-let [docs (session/get :docs)]
      [:div.row>div.col-sm-12
       [:div {:dangerouslySetInnerHTML
