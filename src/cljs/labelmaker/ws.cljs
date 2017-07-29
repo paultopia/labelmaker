@@ -14,7 +14,7 @@ The only public function is websockets-comlink!, which when called from another 
     (str "ws://" (.-host doc-uri) (.-pathname doc-uri) "ws")))
 
 (defn to-json [data] (.stringify js/JSON (clj->js data)))
-(defn from-json [data] (.parse js/JSON (js->clj data :keywordize-keys true)))
+(defn from-json [data] (js->clj (.parse js/JSON data) :keywordize-keys true))
 
 ;; architectural note: clients will send individual question answers back over websockets to be immediately entered, and when they've answered all questions, they'll send a "done" message with it.  Only on getting done message will server send another document.  server will also send ack messages, and if not received client will need to hold onto the data and try again.
 
