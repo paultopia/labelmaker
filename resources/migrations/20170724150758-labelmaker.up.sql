@@ -1,12 +1,10 @@
-CREATE TYPE anstype as ENUM ('tf', 'multiplechoice', 'free', 'numeric');
-
 CREATE TABLE questions
 (qid SERIAL PRIMARY KEY,
  question TEXT,
  instructions TEXT DEFAULT NULL,
  peremptory BOOLEAN DEFAULT FALSE,
  highlight BOOLEAN DEFAULT FALSE,
- answertype anstype,
+ answertype TEXT,
  answeroptions TEXT DEFAULT NULL,
  validation TEXT DEFAULT NULL,
  dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP);

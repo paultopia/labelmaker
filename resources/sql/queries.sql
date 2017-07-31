@@ -20,7 +20,15 @@ WHERE id = :id
 
 -- :name create-question! :! :n
 -- :doc creates a new question
-INSERT INTO questions (question)
+INSERT INTO questions (
+question,
+answertype
+--~ (when (contains? params :peremptory) ",peremptory")
+--~ (when (contains? params :instructions) ",instructions")
+--~ (when (contains? params :highlight) ",highlight")
+--~ (when (contains? params :answeroptions) ",answeroptions")
+--~ (when (contains? params :validation) ",validation")
+)
 VALUES (
 :question,
 :answertype
