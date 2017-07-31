@@ -1,6 +1,7 @@
-- 
+questions:
+-
  question: Is there even a cat involved?
- priority: peremptory
+ peremptory: true
  answertype: tf
 
 -  
@@ -9,6 +10,7 @@
  answeroptions:
  - Leonidas
  - Olive
+ highlight: false
 
 -
  question: What is the square root of 4?
@@ -21,4 +23,5 @@
 -
  question: What is the best thing for a cat to be?
  answertype: free
- questiontype: highlight
+ highlight: true
+docs: byronpoems

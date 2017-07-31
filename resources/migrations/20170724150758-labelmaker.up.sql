@@ -1,13 +1,13 @@
-CREATE TYPE anstype as ENUM ('tf', 'multiplechoice', 'freeanswer', 'numerical');
+CREATE TYPE anstype as ENUM ('tf', 'multiplechoice', 'free', 'numeric');
 
 CREATE TABLE questions
 (qid SERIAL PRIMARY KEY,
  question TEXT,
  instructions TEXT DEFAULT NULL,
- preemptive BOOLEAN DEFAULT FALSE,
+ peremptory BOOLEAN DEFAULT FALSE,
  highlight BOOLEAN DEFAULT FALSE,
  answertype anstype,
- ansoptions TEXT DEFAULT NULL,
+ answeroptions TEXT DEFAULT NULL,
  validation TEXT DEFAULT NULL,
  dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 
@@ -30,7 +30,7 @@ CREATE TABLE responses
  isreentry BOOLEAN DEFAULT FALSE);
 
 CREATE TABLE users
-(uid SERIAL PRIMARY KEY
+(uid SERIAL PRIMARY KEY,
 username TEXT,
  password TEXT,
  isadmin BOOLEAN,
