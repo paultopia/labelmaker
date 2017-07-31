@@ -1,5 +1,6 @@
 (ns labelmaker.parsers.questions
-  (:require [clojure.string :refer [split trim]]))
+  (:require [clojure.string :refer [split trim]]
+            [clj-yaml.core :as yaml]))
 
 
 (defn parse-alist [alist]
@@ -23,3 +24,6 @@
         questions (split qfile #"\n\n")
         qparts (mapv parse-1q questions)]
     qparts))
+
+(defn yaml-parse []
+  (-> "questions.yml" slurp yaml/parse-string))

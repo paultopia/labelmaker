@@ -10,3 +10,13 @@ multiplechoice
 Is the fluffiest cat the best cat?
 # answertype
 tf
+
+# question
+Is there even a cat involved?
+# priority
+peremptory
+# answertype
+tf
+
+# question
+

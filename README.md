@@ -69,7 +69,7 @@ And more importantly I can use myself---run a scraper to get a bunch of contract
 
 
 Questions 
-- question text (optional)
+- question text (mandatory)
 - question extra instructions (popup) (optional)
 - question priority (optional, defaults to basic) (options basic and peremptory)
 - question type (optional, defaults to general) general and highlight
@@ -123,3 +123,73 @@ CREATE TABLE users
  last_login TIME,
  is_active BOOLEAN,
  pass VARCHAR(300));
+
+
+PLANNING
+
+executive decisions:
+- documents are in markdown. 
+- setup flow first
+- first-pass admin interface is command line for setup. 
+- questions are in yaml.
+- buddy authentication because luminus already has it in.
+
+
+
+rabbit holes
+- pdfs
+- admin interface
+- Authoritative users who can trump validation process (like PI)?
+
+
+setup flow: 
+- user puts file of questions (yaml), a directory of documents (markdown), and a config file (yaml) in some appropriate location. 
+    - config file gives paths to each
+- user runs the app with a commandline flag that does setup.
+- questions get parsed and added to database
+- documents get parsed and added to database
+- admin user(s) get set up with username and password and appropriate permissions for admin interface and put in database
+- data entry user(s) get set up with username and password and put in database
+    - each user gets assigned a password by person setting up.  
+    - those passwords are hashed and put in database.
+
+installation flow:
+- jvm, postgres, get installed (ansible? docker?)
+- database gets set up with appropriate username, permission, etc. (user-chosen.  shell script to set up the user and put in the config?) 
+- maybe I don't want to give end-users direct database access at all?  just randomly pick a username and password and put it in the database on the fly?  Eh, that's no good, because if the app crashes that means bye bye data.  randomly pick and save somewhere but strongly discourage its use.
+
+admin flow
+- administrator logs in (or, first pass, enters commands at command line) (for command line interaction, no auth needed, rely on auth for the server?)
+- can get answers to questions as csv joined with docs (database query)
+- can add or remove users (database query)
+- can view validation scores for users (database query)
+- can get codebook from questions/instructions/questionformat/screenshot of interface?! (database query + some after the fact munging)
+- can insert messages for some/all users (which are logged) (??? this might be too much for now.  basically for logging would be best to have a new database table, but, really?)  
+- Can examine partial documents and decide what to do with them (send back to user/anyone, continue from left off/total recode, just finish coding self)
+- this is pretty much all wrappers over database queries.  
+
+user flow: 
+- user logs in, is validated by server.  (login with google?  buddy?  friend?  chas emerick wrote friend, which is a pretty good recommendation)
+- user says "I'm ready for a document", front-end sends request for document to server.
+- server checks to see if document 
+- server checks to see if there's an in-memory queue.  if not, it grabs 20 documents from the database and makes one
+- server sends a document from the in-memory queue to user and stores the user and document in an in-progress list.
+- server marks document as in-progress in the database (or in memory and does database later??) with init date and user.
+- server sends document and first question
+- user answers first question and (if question is of highlight type) (database needs field for that) highlights relevant part of document. 
+- server sticks first answer in database (or batch adds?  down the road, think about duplicate entry protection and all that dba stuff), sends next question to user. 
+- repeat last two steps until there are no more questions left.  (HOW TO TELL?  list of questions should actually be kept on front-end and it should just sequentially show them to users.  and that's actually easy implementation, each question-type has a view attached to it, the questions can be stored in a list of maps, and then can just go down the list displaying until there are no more.)
+- server asks user if ready for another document.  goto 2. 
+
+periodic verification flow
+- every day, server checks to see if any users with pending in-progress documents have been pending for more than a day, and sends report for admin.
+- every week, automatically carries out a default action (specified by setup) on pending in-progress docs where users on them haven't logged in for 24 hours (login condition to prevent edge case of killing a document when some user is working on it right then) 
+- every hour, goes through and batch-marks documents in progress in memory to database?
+- after some reasonable number of documents (500?) and every hundred documents thereafter, fits a model in python, and, if model is accurate enough, queues up some documents for recoding (make appropriate database changes +  (needs to also do a validation step at the end so the last (mod totaldocscount 100) docs don't go unvalidated)
+
+
+numeric answer validation 
+- greaterthan/lessthan
+- odd/even
+- integer?
+

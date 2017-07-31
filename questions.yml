@@ -1,0 +1,24 @@
+- 
+ question: Is there even a cat involved?
+ priority: peremptory
+ answertype: tf
+
+-  
+ question: Who is the fluffiest cat?
+ answertype: multiplechoice
+ answeroptions:
+ - Leonidas
+ - Olive
+
+-
+ question: What is the square root of 4?
+ answertype: numeric
+ instructions: >
+               this is a long line and I'm going to try
+               to make it work and let's hope it does.
+ validation: 10 > answer > 0
+
+-
+ question: What is the best thing for a cat to be?
+ answertype: free
+ questiontype: highlight
