@@ -1,6 +1,6 @@
 (ns labelmaker.questions.core
   (:require [reagent.core :as r]
-            [labelmaker.utils.core :refer [to-json from-json]]
+            [labelmaker.utils.core :refer [to-json from-json component-mapper]]
             [labelmaker.documents.core :refer [highlightable-document plain-document]]
             [cljs.core.match :refer-macros [match]]))
 
@@ -41,7 +41,7 @@
 
 (defn multiplechoice-component [{aopts :answeroptions} answer]
   (let [choicelist (from-json aopts)]
-    (reduce conj [:div] (mapv (partial mc-item answer) choicelist))))
+    (component-mapper (partial mc-item answer) :div choicelist)))
 
 (defn numeric-component [{:keys [question instructions]} answer]
   [:div])
