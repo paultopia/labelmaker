@@ -31,8 +31,22 @@
      [:button {:class (if (or achoice (nil? achoice)) "btn btn-secondary"  "btn btn-primary")
                :on-click #(swap! answer assoc :answer false)} "No."]]))
 
-(defn multiplechoice-component [{:keys [question answeroptions instructions]} answer]
-  [:div])
+(defn mc-item [answer atext]
+  (let [choice (:answer @answer)]
+    [:p {:key atext}
+     [:button {:class (if (= choice atext) "btn btn-primary" "btn btn-secondary")
+               :on-click #(swap! answer assoc :answer atext)} "Select: "]
+     " " atext]))
+
+(defn mc-item2 [answer atext]
+  [:p atext])
+
+(defn multiplechoice-component [{aopts :answeroptions} answer]
+  (let [choicelist (.parse js/JSON aopts)]
+    (reduce conj [:div] (mapv (partial mc-item answer) choicelist))
+   ;; [mc-item answer (first choicelist)]
+    ;; (mapv (partial mc-item answer) choicelist)
+  ))
 
 (defn numeric-component [{:keys [question instructions]} answer]
   [:div])
@@ -41,8 +55,16 @@
   [:div])
 
 
-(defn question-component [current-quatom current-docatom current-useratom submission-function]
-  (let [{:keys [question answertype peremptory instructions qid highlight] :as cq} @current-quatom
+(defn question-component [current-quatom
+                          current-docatom
+                          current-useratom
+                          submission-function]
+  (let [{:keys [question
+                answertype
+                peremptory
+                instructions
+                qid
+                highlight] :as cq} @current-quatom
         userid (:userid @current-useratom)
         did (:did @current-docatom)
         answer (r/atom {:userid userid :did did :qid qid :answer nil :highlight nil})]

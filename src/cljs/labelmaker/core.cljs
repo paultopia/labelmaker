@@ -19,8 +19,8 @@
                                :instructions nil
                                :peremptory nil
                                :highlight true
-                               :answertype "tf"
-                               :answeroptions nil
+                               :answertype "multiplechoice"
+                               :answeroptions (.stringify js/JSON (clj->js ["foo" "bar"]))
                                :validation nil}))
 
 (def current-document (r/atom {:did 0 :document "Test document here!"}))
