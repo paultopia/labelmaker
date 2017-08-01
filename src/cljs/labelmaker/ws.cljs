@@ -7,14 +7,12 @@ The only public function is websockets-comlink!, which when called from another 
   (:import goog.net.WebSocket)
   (:require-macros [cljs.core.async.macros :refer [go go-loop]])
   (:require [goog.events :as ev]
-            [cljs.core.async :refer [>! <! chan buffer]]))
+            [cljs.core.async :refer [>! <! chan buffer]]
+            [labelmaker.utils.core :refer [to-json from-json]]))
 
 (def ws-uri
   (let [doc-uri (.-location js/window)]
     (str "ws://" (.-host doc-uri) (.-pathname doc-uri) "ws")))
-
-(defn to-json [data] (.stringify js/JSON (clj->js data)))
-(defn from-json [data] (js->clj (.parse js/JSON data) :keywordize-keys true))
 
 ;; architectural note: clients will send individual question answers back over websockets to be immediately entered, and when they've answered all questions, they'll send a "done" message with it.  Only on getting done message will server send another document.  server will also send ack messages, and if not received client will need to hold onto the data and try again.
 

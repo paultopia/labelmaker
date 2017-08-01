@@ -8,6 +8,7 @@
             [labelmaker.ajax :refer [load-interceptors!]]
             [ajax.core :refer [GET POST]]
             [labelmaker.ws :refer [websockets-comlink!]]
+            [labelmaker.utils.core :refer [to-json from-json]]
             [labelmaker.questions.core :refer [question-component]])
   (:import goog.History))
 
@@ -20,7 +21,7 @@
                                :peremptory nil
                                :highlight true
                                :answertype "multiplechoice"
-                               :answeroptions (.stringify js/JSON (clj->js ["foo" "bar"]))
+                               :answeroptions (to-json ["foo" "bar"])
                                :validation nil}))
 
 (def current-document (r/atom {:did 0 :document "Test document here!"}))
