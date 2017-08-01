@@ -530,3 +530,74 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.82 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
 notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 2.115 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/documents/core.cljs   line:43  column:58  ----[0m
+
+  [1mUse of undeclared Var labelmaker.documents.core/content[0m
+
+  [36m39[0m  [36m  (let [hatom (r/atom [""])[0m
+  [36m40[0m  [36m        visatom (r/atom "none")][0m
+  [36m41[0m  [36m      [:div[0m
+  [36m42[0m  [36m       [:p {:on-mouse-up #(get-selected hatom visatom)[0m
+  [33m43[0m  [1m            :on-touch-end #(get-selected hatom visatom)} content][0m
+  [0m  [0m  [33m                                                         ^--- Use of undeclared Var labelmaker.documents.core/content[0m
+  [36m44[0m  [36m       [submission-button hatom visatom answer]]))[0m
+  [36m45[0m  [36m[0m
+  [36m46[0m  [36m[0m
+  [36m47[0m  [36m(defn plain-document [current-docatom answer][0m
+  [36m48[0m  [36m  [:div (:document @current-docatom)])[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/documents/core.cljs  ----[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.307 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.673 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.64 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.644 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.9 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.687 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.858 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.678 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.54 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.675 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.636 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.657 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.587 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.521 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.921 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 3.115 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js

@@ -1,5 +1,6 @@
 (ns labelmaker.questions.core
   (:require [reagent.core :as r]
+            [labelmaker.documents.core :refer [highlightable-document plain-document]]
             [cljs.core.match :refer-macros [match]]))
 
 ;; answers are a map of: {:did :qid :answer :userid :done :highlight } where the last of these is to handle further-down UI for deciding whether to render the request a new document or not.
@@ -22,10 +23,13 @@
 
 
 (defn tf-component [answer]
-  [:p
-   [:button {:class "btn btn-primary" :on-click #(swap! answer assoc :answer true)} "Yes."]
-   " "
-   [:button {:class "btn btn-primary" :on-click #(swap! answer assoc :answer false)} "No."]])
+  (let [achoice (:answer @answer)]
+    [:p
+     [:button {:class (if achoice "btn btn-primary" "btn btn-secondary")
+               :on-click #(swap! answer assoc :answer true)} "Yes."]
+       " "
+     [:button {:class (if (or achoice (nil? achoice)) "btn btn-secondary"  "btn btn-primary")
+               :on-click #(swap! answer assoc :answer false)} "No."]]))
 
 (defn multiplechoice-component [{:keys [question answeroptions instructions]} answer]
   [:div])
@@ -38,13 +42,11 @@
 
 
 (defn question-component [current-quatom current-docatom current-useratom submission-function]
-  (let [{:keys [question answertype peremptory instructions qid] :as cq} @current-quatom
+  (let [{:keys [question answertype peremptory instructions qid highlight] :as cq} @current-quatom
         userid (:userid @current-useratom)
         did (:did @current-docatom)
         answer (r/atom {:userid userid :did did :qid qid :answer nil :highlight nil})]
     [:div
-     [:p userid]
-     [:p did]
      [:p question]
      (if instructions [instructions-component instructions] nil)
     (match answertype
@@ -52,5 +54,8 @@
            "multiplechoice" [multiplechoice-component cq answer]
            "numeric" [numeric-component cq answer]
            "free" [free-component cq answer])
-     [submit-button-component peremptory answer submission-function]]))
+     [submit-button-component peremptory answer submission-function]
+     (if highlight
+       [highlightable-document current-docatom answer]
+       [plain-document current-docatom answer])]))
 

@@ -8,7 +8,6 @@
             [labelmaker.ajax :refer [load-interceptors!]]
             [ajax.core :refer [GET POST]]
             [labelmaker.ws :refer [websockets-comlink!]]
-            [labelmaker.documents.core :refer [highlightable-document]]
             [labelmaker.questions.core :refer [question-component]])
   (:import goog.History))
 
@@ -19,7 +18,7 @@
                                :qid 0
                                :instructions nil
                                :peremptory nil
-                               :highlight false
+                               :highlight true
                                :answertype "tf"
                                :answeroptions nil
                                :validation nil}))
@@ -79,7 +78,6 @@
    [:div.row>div.col-sm-12
     [clickme]
     [clickme2]]
-   [highlightable-document "this is some text that is a test."]
    (when-let [docs (session/get :docs)]
      [:div.row>div.col-sm-12
       [:div {:dangerouslySetInnerHTML
