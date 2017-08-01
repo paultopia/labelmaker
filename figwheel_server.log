@@ -376,3 +376,50 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.571 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/documents/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[36m----  Compiler Warning on   src/cljs/labelmaker/core.cljs   line:14  column:23  ----[0m
+
+  [1mWrong number of args (0) passed to reagent.core/atom[0m
+
+  [36m10[0m  [36m            [labelmaker.ws :refer [websockets-comlink!]][0m
+  [36m11[0m  [36m            [labelmaker.documents.core :refer [highlightable-document]])[0m
+  [36m12[0m  [36m  (:import goog.History))[0m
+  [36m13[0m  [36m[0m
+  [33m14[0m  [1m(def current-question (r/atom))[0m
+  [0m  [0m  [33m                      ^--- Wrong number of args (0) passed to reagent.core/atom[0m
+  [36m15[0m  [36m[0m
+  [36m16[0m  [36m(defn log-messages [message][0m
+  [36m17[0m  [36m  (.log js/console message))[0m
+  [36m18[0m  [36m[0m
+  [36m19[0m  [36m(def send-ws! (websockets-comlink! log-messages)) ;sets up a sender + passes the logger to a listener.[0m
+
+[36m----  Compiler Warning : Please see src/cljs/labelmaker/core.cljs  ----[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 5.218 seconds.[0m
+[36m----  Could not Read  src/cljs/labelmaker/questions/core.cljs   line:20  column:83  ----[0m
+
+  [1mMap literal must contain an even number of forms[0m
+
+  [36m18[0m  [36m(defn submit-button-component [peremptory? answer][0m
+  [36m19[0m  [36m  [:p[0m
+  [33m20[0m  [1m   [:button {:class "btn btn-success" :on-click #(.log js/console @answer) "Yes."}]])[0m
+  [0m  [0m  [33m                                                                                  ^--- Map literal must contain an even number of forms[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m(defn question-component [current-quatom current-docatom current-useratom][0m
+  [36m23[0m  [36m  (let [{:keys [question answertype peremptory instructions qid] :as cq} @current-quatom[0m
+
+[36m----  Reader Error : Please see src/cljs/labelmaker/questions/core.cljs  ----[0m
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[31mFailed to compile "target/cljsbuild/public/js/app.js" in 1.621 seconds.[0m
+[36m----  Could not Read  src/cljs/labelmaker/questions/core.cljs   line:20  column:83  ----[0m
+
+  [1mMap literal must contain an even number of forms[0m
+
+  [36m18[0m  [36m(defn submit-button-component [peremptory? answer][0m
+  [36m19[0m  [36m  [:p[0m
+  [33m20[0m  [1m   [:button {:class "btn btn-success" :on-click #(.log js/console @answer) "Yes."}]])[0m
+  [0m  [0m  [33m                                                                                  ^--- Map literal must contain an even number of forms[0m
+  [36m21[0m  [36m[0m
+  [36m22[0m  [36m(defn question-component [current-quatom current-docatom current-useratom][0m
+  [36m23[0m  [36m  (let [{:keys [question answertype peremptory instructions qid] :as cq} @current-quatom[0m
+
+[36m----  Reader Error : Please see src/cljs/labelmaker/questions/core.cljs  ----[0m

@@ -11,6 +11,8 @@
             [labelmaker.documents.core :refer [highlightable-document]])
   (:import goog.History))
 
+(def current-question (r/atom))
+
 (defn log-messages [message]
   (.log js/console message))
 

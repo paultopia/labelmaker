@@ -21,14 +21,14 @@ CREATE TABLE responses
 (id SERIAL PRIMARY KEY,
  qid INTEGER,
  did INTEGER,
- uid INTEGER,
+ userid INTEGER,
  answer TEXT,
  dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
  hasreentry BOOLEAN DEFAULT FALSE,
  isreentry BOOLEAN DEFAULT FALSE);
 
 CREATE TABLE users
-(uid SERIAL PRIMARY KEY,
+(userid SERIAL PRIMARY KEY,
 username TEXT,
  password TEXT,
  isadmin BOOLEAN,

@@ -16,7 +16,7 @@ WHERE username = :username
 -- :name delete-user! :! :n
 -- :doc delete a user given the id
 DELETE FROM users
-WHERE id = :id
+WHERE username = :username
 
 -- :name create-question! :! :n
 -- :doc creates a new question
