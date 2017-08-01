@@ -20,7 +20,7 @@
                                :instructions nil
                                :peremptory nil
                                :highlight true
-                               :answertype "multiplechoice"
+                               :answertype "numeric"
                                :answeroptions (to-json ["foo" "bar"])
                                :validation nil}))
 

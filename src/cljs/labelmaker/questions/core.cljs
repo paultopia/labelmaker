@@ -1,6 +1,6 @@
 (ns labelmaker.questions.core
   (:require [reagent.core :as r]
-            [labelmaker.utils.core :refer [to-json from-json component-mapper]]
+            [labelmaker.utils.core :refer [to-json from-json component-mapper validate-numeric]]
             [labelmaker.documents.core :refer [highlightable-document plain-document]]
             [cljs.core.match :refer-macros [match]]))
 
@@ -43,11 +43,23 @@
   (let [choicelist (from-json aopts)]
     (component-mapper (partial mc-item answer) :div choicelist)))
 
-(defn numeric-component [{:keys [question instructions]} answer]
-  [:div])
+(defn numeric-component [{:keys [question instructions]} answer] ;; will just store numbers as strings so as to be consistent with rest of database, etc. validation will be later or never perhaps?
+  (let [response (:answer @answer)
+        valid? (validate-numeric response)]
+    [:p
+     [:input {:type "text"
+              :value response
+              :on-change #(swap! answer assoc :answer (-> % .-target .-value))}]
+     [:br]
+     (if-not valid? "Please be sure your answer is a number (decimal points are ok, commas are not)" nil)]))
 
 (defn free-component [{:keys [question instructions]} answer]
-  [:div])
+  (let [response (:answer @answer)]
+    [:p
+     [:textarea {:rows "10"
+                 :cols "80"
+                 :value response
+                 :on-change #(swap! answer assoc :answer (-> % .-target .-value))}]]))
 
 
 (defn question-component [current-quatom
