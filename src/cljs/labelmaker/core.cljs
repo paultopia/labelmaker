@@ -12,6 +12,9 @@
             [labelmaker.questions.core :refer [question-component]])
   (:import goog.History))
 
+(defn just-log-it [foo]
+  (.log js/console foo))
+
 (def current-question (r/atom {:question "Test question here?"
                                :qid 0
                                :instructions nil
@@ -28,8 +31,8 @@
 (defn home-page []
   [:div.container
    [:div.row>div.col-sm-12
-    [question-component current-question current-document current-user]
-    ]])
+    [question-component current-question current-document current-user just-log-it]
+    ]]) ;; when the time is right, I can swap out submission functions by replacing just-log-it with something that actually sends to server, processes, etc.
 
 
 (defn log-messages [message]

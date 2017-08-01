@@ -23,6 +23,7 @@ CREATE TABLE responses
  did INTEGER,
  userid INTEGER,
  answer TEXT,
+ highlight TEXT DEFAULT NULL,
  dateadded TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
  hasreentry BOOLEAN DEFAULT FALSE,
  isreentry BOOLEAN DEFAULT FALSE);

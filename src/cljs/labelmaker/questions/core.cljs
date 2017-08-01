@@ -2,7 +2,7 @@
   (:require [reagent.core :as r]
             [cljs.core.match :refer-macros [match]]))
 
-;; answers are a map of: {:did :qid :answer :userid :done} where the last of these is to handle further-down UI for deciding whether to render the request a new document or not.
+;; answers are a map of: {:did :qid :answer :userid :done :highlight } where the last of these is to handle further-down UI for deciding whether to render the request a new document or not.
 
 ;; upstream I'll have these answers put on a core-async
 
@@ -15,9 +15,10 @@
 (defn instructions-component [instructions] ;; make me a popup later
   [:p instructions])
 
-(defn submit-button-component [peremptory? answer]
+(defn submit-button-component [peremptory? answer submission-function]
   [:p
-   [:button {:class "btn btn-success" :on-click #(.log js/console @answer)} "Yes."]])
+   [:button {:class "btn btn-success" :on-click #(submission-function @answer)} "Submit."]])  ;; put me on the async channel (or just a queue?!) to get processed later.  the submission-function parameter way up in what calls question-component will do the trick.
+
 
 
 (defn tf-component [answer]
@@ -36,11 +37,11 @@
   [:div])
 
 
-(defn question-component [current-quatom current-docatom current-useratom]
+(defn question-component [current-quatom current-docatom current-useratom submission-function]
   (let [{:keys [question answertype peremptory instructions qid] :as cq} @current-quatom
         userid (:userid @current-useratom)
         did (:did @current-docatom)
-        answer (r/atom {:userid userid :did did :qid qid})]
+        answer (r/atom {:userid userid :did did :qid qid :answer nil :highlight nil})]
     [:div
      [:p userid]
      [:p did]
@@ -51,5 +52,5 @@
            "multiplechoice" [multiplechoice-component cq answer]
            "numeric" [numeric-component cq answer]
            "free" [free-component cq answer])
-     [submit-button-component peremptory answer]]))
+     [submit-button-component peremptory answer submission-function]]))
 

@@ -52,8 +52,8 @@ WHERE did = :did
 
 -- :name add-response! :! :n
 -- :doc adds a response
-INSERT INTO responses (qid did userid answer)
-VALUES (:qid :did :userid :answer)
+INSERT INTO responses (qid did userid answer highlight)
+VALUES (:qid :did :userid :answer highlight)
 
 -- :name get-full-responses! :? :*
 -- :doc get all the data

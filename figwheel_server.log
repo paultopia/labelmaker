@@ -522,3 +522,11 @@ notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/
 [0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
 [32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 1.139 seconds.[0m
 notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.546 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
+[0mCompiling "target/cljsbuild/public/js/app.js" from ["src/cljs" "src/cljc" "env/dev/cljs"]...[0m
+[32mSuccessfully compiled "target/cljsbuild/public/js/app.js" in 0.82 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/questions/core.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/labelmaker/core.js
