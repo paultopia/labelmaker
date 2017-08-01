@@ -17,28 +17,14 @@
 
 (defn submit-button-component [peremptory? answer]
   [:p
-   [:button {:class "btn btn-success" :on-click #(.log js/console @answer) "Yes."}]])
+   [:button {:class "btn btn-success" :on-click #(.log js/console @answer)} "Yes."]])
 
-(defn question-component [current-quatom current-docatom current-useratom]
-  (let [{:keys [question answertype peremptory instructions qid] :as cq} @current-quatom
-        userid (:userid current-useratom)
-        did (:did current-docatom)
-        answer (r/atom {:userid userid :did did :qid qid})]
-    [:div
-     [:p question]
-     (if instructions [instructions-component instructions] nil)
-    (match answertype
-           "tf" [tf-component answer]
-           "multiplechoice" [multiplechoice-component cq answer]
-           "numeric" [numeric-component cq answer]
-           "free" [free-component cq answer])
-     [submit-button-component peremptory answer]]))
 
 (defn tf-component [answer]
-     [:p
-      [:button {:class "btn btn-primary" :on-click #(swap! answer assoc :answer true) "Yes."}]
-      " "
-      [:button {:class "btn btn-primary" :on-click #(swap! answer assoc :answer false) "No."}]])
+  [:p
+   [:button {:class "btn btn-primary" :on-click #(swap! answer assoc :answer true)} "Yes."]
+   " "
+   [:button {:class "btn btn-primary" :on-click #(swap! answer assoc :answer false)} "No."]])
 
 (defn multiplechoice-component [{:keys [question answeroptions instructions]} answer]
   [:div])
@@ -48,3 +34,22 @@
 
 (defn free-component [{:keys [question instructions]} answer]
   [:div])
+
+
+(defn question-component [current-quatom current-docatom current-useratom]
+  (let [{:keys [question answertype peremptory instructions qid] :as cq} @current-quatom
+        userid (:userid @current-useratom)
+        did (:did @current-docatom)
+        answer (r/atom {:userid userid :did did :qid qid})]
+    [:div
+     [:p userid]
+     [:p did]
+     [:p question]
+     (if instructions [instructions-component instructions] nil)
+    (match answertype
+           "tf" [tf-component answer]
+           "multiplechoice" [multiplechoice-component cq answer]
+           "numeric" [numeric-component cq answer]
+           "free" [free-component cq answer])
+     [submit-button-component peremptory answer]]))
+

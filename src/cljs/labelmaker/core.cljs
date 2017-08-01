@@ -8,10 +8,29 @@
             [labelmaker.ajax :refer [load-interceptors!]]
             [ajax.core :refer [GET POST]]
             [labelmaker.ws :refer [websockets-comlink!]]
-            [labelmaker.documents.core :refer [highlightable-document]])
+            [labelmaker.documents.core :refer [highlightable-document]]
+            [labelmaker.questions.core :refer [question-component]])
   (:import goog.History))
 
-(def current-question (r/atom))
+(def current-question (r/atom {:question "Test question here?"
+                               :qid 0
+                               :instructions nil
+                               :peremptory nil
+                               :highlight false
+                               :answertype "tf"
+                               :answeroptions nil
+                               :validation nil}))
+
+(def current-document (r/atom {:did 0 :document "Test document here!"}))
+
+(def current-user (r/atom {:userid 0 :username "Test user."}))
+
+(defn home-page []
+  [:div.container
+   [:div.row>div.col-sm-12
+    [question-component current-question current-document current-user]
+    ]])
+
 
 (defn log-messages [message]
   (.log js/console message))
@@ -52,7 +71,7 @@
     [:div.col-md-12
      [:img {:src (str js/context "/img/warning_clojure.png")}]]]])
 
-(defn home-page []
+(defn documentation-page []
   [:div.container
    [:div.row>div.col-sm-12
     [clickme]
