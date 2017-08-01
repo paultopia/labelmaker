@@ -6,16 +6,16 @@
 (defn load-yaml []
   (-> "config.yml" slurp yaml/parse-string))
 
-(defn load-documents [dirname]
+(defn db-doc-from-file [filename]
+  (let [docmap {:document (slurp filename)}]
+    (println "loading: " docmap)
+    (db/create-document! docmap)))
+
+(defn stream-documents-into-db! [dirname]
   (let [path (str "./" dirname)
-        files (filter #(.isFile %) (file-seq (clojure.java.io/file path)))]
-      (mapv slurp files)))
-
-(defn load-all-into-memory! []
-  (let [{:keys [questions docs]} (load-yaml)]
-    {:questions questions :docs (load-documents docs)}))
-
-;; after this works, I should actually make it load one document per time without holding them in memory, so I can handle document sets bigger than memory.
+        files (filter #(.isFile %) (file-seq (clojure.java.io/file path)))
+        filenames (map #(str path "/" (.getName %)) files)]
+    (run! db-doc-from-file filenames)))
 
 (defn tidyopts [qmap]
   (let [aopts (:answeroptions qmap)] 
@@ -23,9 +23,7 @@
 
 (defn load-all! []
   (let [{:keys [questions docs]} (load-yaml)
-        qs (mapv tidyopts questions)
-        documents (mapv #(identity {:document %}) (load-documents docs))]
-    (doall (map db/create-question! qs))
-     (doall (map db/create-document! documents))
-    ))
+        qs (mapv tidyopts questions)]
+    (run! db/create-question! qs)
+     (stream-documents-into-db! docs)))
 
