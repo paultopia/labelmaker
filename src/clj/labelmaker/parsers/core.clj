@@ -1,7 +1,7 @@
 (ns labelmaker.parsers.core
   (:require [clj-yaml.core :as yaml]
             [labelmaker.db.core :as db]
-            [clojure.string :refer [join]]))
+            [labelmaker.utils.json :refer [to-json]]))
 
 (defn load-yaml []
   (-> "config.yml" slurp yaml/parse-string))
@@ -19,7 +19,7 @@
 
 (defn tidyopts [qmap]
   (let [aopts (:answeroptions qmap)] 
-    (assoc qmap :answeroptions (join "," aopts))))
+    (assoc qmap :answeroptions (to-json aopts))))
 
 (defn load-all! []
   (let [{:keys [questions docs]} (load-yaml)

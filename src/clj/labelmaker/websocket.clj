@@ -1,11 +1,8 @@
 (ns labelmaker.websocket
   (:require [immutant.web.async :as async]
-            [clojure.data.json :as json]
+            [labelmaker.utils.json :refer [to-json from-json]]
             [clojure.core.async
              :refer [>! <! >!! <!! go chan thread go-loop buffer]]))
-
-(defn to-json [data] (json/write-str data))
-(defn from-json [data] (json/read-str data :key-fn keyword))
 
 (def inchan (chan 100))
 
