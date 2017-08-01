@@ -66,6 +66,7 @@
         [:a.navbar-brand {:href "#/"} "labelmaker"]
         [:ul.nav.navbar-nav
          [nav-link "#/" "Home" :home collapsed?]
+         [nav-link "#/docs" "Docs" :docs collapsed?]
          [nav-link "#/about" "About" :about collapsed?]]]])))
 
 (defn about-page []
@@ -76,9 +77,6 @@
 
 (defn documentation-page []
   [:div.container
-   [:div.row>div.col-sm-12
-    [clickme]
-    [clickme2]]
    (when-let [docs (session/get :docs)]
      [:div.row>div.col-sm-12
       [:div {:dangerouslySetInnerHTML
@@ -86,7 +84,10 @@
 
 (def pages
   {:home #'home-page
-   :about #'about-page})
+   :about #'about-page
+   :docs #'documentation-page})
+
+;; should have an instructions/codebook page that concatenates all the questions and instructions from every one. 
 
 (defn page []
   [(pages (session/get :page))])
@@ -100,6 +101,9 @@
 
 (secretary/defroute "/about" []
   (session/put! :page :about))
+
+(secretary/defroute "/docs" []
+  (session/put! :page :docs))
 
 ;; -------------------------
 ;; History
