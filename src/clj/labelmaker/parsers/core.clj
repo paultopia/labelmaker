@@ -8,7 +8,6 @@
 
 (defn db-doc-from-file [filename]
   (let [docmap {:document (slurp filename)}]
-    (println "loading: " docmap)
     (db/create-document! docmap)))
 
 (defn stream-documents-into-db! [dirname]
