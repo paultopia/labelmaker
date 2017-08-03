@@ -3,10 +3,11 @@
 INSERT INTO users (username, password, isadmin)
 VALUES (:username, :password, :isadmin)
 
--- :name create-users! :! :n
--- :doc creates multiple new users
-INSERT INTO users (username, password, isadmin)
-VALUES :tuple*users
+-- :name change-password :! n
+-- :doc changes user's password
+UPDATE users
+SET (password = :password)
+WHERE username = :username
 
 -- :name get-user :? :1
 -- :doc retrieve a user given the username.
@@ -36,7 +37,8 @@ VALUES (
 --~ (when (contains? params :instructions) ",:instructions")
 --~ (when (contains? params :highlight) ",:highlight")
 --~ (when (contains? params :answeroptions) ",:answeroptions")
---~ (when (contains? params :validation) ",:validation")
+--~
+(when (contains? params :validation) ",:validation")
 )
 
 -- :name create-document! :! :n

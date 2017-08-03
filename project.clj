@@ -11,6 +11,7 @@
                  [conman "0.6.7"]
                  [cprop "0.1.10"]
                  [circleci/clj-yaml "0.5.5"]
+                 [crypto-random "1.2.0"]
                  [org.clojure/core.match "0.3.0-alpha5"]
                  [funcool/struct "1.0.0"]
                  [luminus-immutant "0.2.3"]

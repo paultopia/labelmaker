@@ -1,0 +1,3 @@
+someuser
+*someadmin
+anotheruser

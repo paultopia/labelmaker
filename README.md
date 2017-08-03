@@ -1,3 +1,10 @@
+New executive decision: I'm going to accept that the open-source and easy deploy version of this is going to be insecure.  There is no way to just spin up easy security given the difficulty of getting into https and such; users will need to be told that if they want a secure version they should use something they pay for. 
+
+the security goal for this will just be twofold:
+1.  protecting against very weak attacks (i.e., there are actual passwords, even if they're transmitted in clear)
+2.  protecting against weaknesses here leaking out (i.e., automatically assigned passwords so users can't reuse and get screwed on other places etc.)
+
+another possibility is permitting heroku deploy only... it looks like foo.herokuapp.com already uses https by default? see https://devcenter.heroku.com/articles/ssl-endpoint -- and use heroku postgres?  that will increase the cost a bit though, essentially $7/month hobby dyno + $9/month postgres up to 10m rows (which seems a reasonable upper limit).  probably will lead to easier overall deploy though...
 
 (notesdump follows)
 
