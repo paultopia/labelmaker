@@ -34,11 +34,7 @@
     [question-component current-question current-document current-user just-log-it]
     ]]) ;; when the time is right, I can swap out submission functions by replacing just-log-it with something that actually sends to server, processes, etc.
 
-
-(defn log-messages [message]
-  (.log js/console message))
-
-(def send-ws! (websockets-comlink! log-messages)) ;sets up a sender + passes the logger to a listener.
+(def send-ws! (websockets-comlink! just-log-it)) ;sets up a sender + passes the logger to a listener.
 
 (defn clickme []
   [:p

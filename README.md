@@ -6,6 +6,7 @@ the security goal for this will just be twofold:
 
 another possibility is permitting heroku deploy only... it looks like foo.herokuapp.com already uses https by default? see https://devcenter.heroku.com/articles/ssl-endpoint -- and use heroku postgres?  that will increase the cost a bit though, essentially $7/month hobby dyno + $9/month postgres up to 10m rows (which seems a reasonable upper limit).  probably will lead to easier overall deploy though...
 
+
 (notesdump follows)
 
 Path forward:

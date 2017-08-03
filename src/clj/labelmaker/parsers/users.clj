@@ -1,7 +1,8 @@
 (ns labelmaker.parsers.users
   (:require [crypto.random :refer [url-part]]
-            [clojure.string :refer [split starts-with?]]
-            [buddy.hashers :as hashers]))
+            [clojure.string :refer [split starts-with? join]]
+            [buddy.hashers :as hashers]
+            [labelmaker.db.core :as db]))
 
 (defn adminator [line]
   (if (starts-with? line "*")
@@ -15,7 +16,9 @@
      :encrypted (assoc usermap :password hashpw)}))
 
 (defn parse-userfile []
-  (let [uf (split (slurp "users.txt") #"\n")]
-    (mapv (comp passwordinator adminator) uf)))
+  (let [uf (split (slurp "users.txt") #"\n")
+        ubig (mapv (comp passwordinator adminator) uf)]
+    (spit "users-with-pw.txt" (join "\n" (map :plain ubig)))
+    (run! db/create-user! (mapv :encrypted ubig))))
 
 

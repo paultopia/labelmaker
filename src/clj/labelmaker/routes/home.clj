@@ -8,6 +8,9 @@
 (defn home-page []
   (layout/render "home.html"))
 
+(defn secret-page []
+  (str "secret secret!"))
+
 (defroutes home-routes
   (GET "/" []
        (home-page))
@@ -16,3 +19,6 @@
        (-> (response/ok (-> "docs/docs.md" io/resource slurp))
            (response/header "Content-Type" "text/plain; charset=utf-8"))))
 
+(defroutes experimental-secret-routes
+  (GET "/secret" []
+       (secret-page)))
