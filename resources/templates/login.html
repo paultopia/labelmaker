@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Login.</title>
+  </head>
+  <body>
+
+      <h1>Login</h1>
+
+      <form method="post">
+          {% csrf-field %}
+          <input type="text" placeholder="Username:" name="username" />
+          <input type="password" placeholder="Password:" name="password" />
+          <input type="submit" value="Submit" />
+      </form>
+
+
+    <script type="text/javascript">
+        var context = "{{servlet-context}}";
+        var csrfToken = "{{csrf-token}}";
+    </script>
+  </body>
+</html>
+
+
+
+

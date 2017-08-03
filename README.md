@@ -6,6 +6,7 @@ the security goal for this will just be twofold:
 
 another possibility is permitting heroku deploy only... it looks like foo.herokuapp.com already uses https by default? see https://devcenter.heroku.com/articles/ssl-endpoint -- and use heroku postgres?  that will increase the cost a bit though, essentially $7/month hobby dyno + $9/month postgres up to 10m rows (which seems a reasonable upper limit).  probably will lead to easier overall deploy though...
 
+I think the authentication structure will just be based on two routes on serverside: root route will provide a login page at / and will be unauthenticated.  Then there will be an authenticated route that will actually have the reagent front-end.  and I can have a third, admin route down the road that will provide access both to admin tools and to the authenticated route.  but these choices will be on login page.
 
 (notesdump follows)
 
