@@ -24,15 +24,21 @@
       (let [next-url "/secret"  ;; this can change and dispatch based on form-params
             updated-session (assoc session :identity (keyword username) :admin (:isadmin valid))]
         (->
-         (response/found next-url)
+         (response/found next-url)  ;; response/found is a redirect.
          (assoc :session updated-session)))
       (layout/render "login.html"))))
+
+(defn logout
+  [request]
+  (-> (response/found "/login")
+      (assoc :session {})))
 
 (defroutes home-routes
   (GET "/" []
        (home-page))
   (GET "/login" []
        (login-page))
+  (GET "/logout" [] logout)
   (POST "/login" [] login-authenticate)
   (GET "/ws" [] (websocket-handler! test-say-back))
   (GET "/docs" []
