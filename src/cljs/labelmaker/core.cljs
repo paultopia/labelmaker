@@ -69,6 +69,7 @@
   [:div.container
    [:div.row
     [:div.col-md-12
+     [clickme]
      [:img {:src (str js/context "/img/warning_clojure.png")}]]]])
 
 (defn documentation-page []

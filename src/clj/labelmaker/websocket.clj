@@ -8,11 +8,18 @@
 
 (defonce sockets (atom #{}))
 
-(defn connect! [socket]
-  (swap! sockets conj socket))
+(defonce socket-user (atom {}))
+;; if I've done this right, this should contain a mapping from sockets to authenticated users, s.t. I can associate websockets data with users without having it be supplied on clientside.
+
+(defn connect! [identity socket]
+  (do
+    (swap! sockets conj socket)
+    (swap! socket-user assoc (str socket) identity)))
 
 (defn disconnect! [socket {:keys [code reason]}]
-  (swap! sockets #(remove #{socket} %)))
+  (do
+    (swap! sockets #(remove #{socket} %))
+    (swap! socket-user dissoc (str socket))))
 
 (defn take-incoming [this-socket msg]
   (let [message (from-json msg)]
@@ -26,17 +33,20 @@
         (callback socket message))
       (recur))))
 
-(def websocket-callbacks
+(defn websocket-callbacks [request]
   "WebSocket callback functions"
-  {:on-open connect!
+  {:on-open (partial connect! (get request :identity))
    :on-close disconnect!
    :on-message take-incoming})
 
 (defn ws-handler [request]
-  (async/as-channel request websocket-callbacks))
+    (async/as-channel request (websocket-callbacks request)))
 
 (defn test-say-back [this-socket message]
-  (async/send! this-socket (to-json {:word (:word message) :num (inc (:num message))})))
+  (let [username (get @socket-user (str this-socket))]
+    (async/send! this-socket (to-json {:word (:word message)
+                                       :num (inc (:num message))
+                                       :username username}))))
 
 (defn websocket-handler!
 "the callback function will take the socket identifier that the message came from and the message.  that's the place where I'll figure out what type of message (with a multimethod?), shove data in db, and acknowledge success."
