@@ -61,4 +61,4 @@
   (GET "/admin" []
        (str "you're an admin!  congratulations!")))
 
-;; so right now everything in experimental-secret-routes requires login to access.  (It's all in the handlers namespace.)  FURTHER DOWN THE LINE what I should do is: 1.  rename that.  2.  put everything except the login page in there.  3.  create a separate auth-pipeline with handler for admin (actually I should do that now), and then the login page will just be the only page people can see. 
+;; So I've verified that websockets can be authenticated too, so when it all gets wired together pretty much all I have to do is make the root route / the login page, and have it redirect to a page that gives users a choice to start coding or (if admin) administer, and put the ws route in authenticated plus the home route with the js, then put the admin route in admin routes.
