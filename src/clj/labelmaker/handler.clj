@@ -1,7 +1,7 @@
 (ns labelmaker.handler
   (:require [compojure.core :refer [routes wrap-routes]]
             [labelmaker.layout :refer [error-page]]
-            [labelmaker.routes.home :refer [home-routes experimental-secret-routes]]
+            [labelmaker.routes.home :refer [home-routes authenticated-routes admin-routes]]
             [compojure.route :as route]
             [labelmaker.env :refer [defaults]]
             [mount.core :as mount]
@@ -16,10 +16,14 @@
     (-> #'home-routes
         (wrap-routes middleware/wrap-csrf)
         (wrap-routes middleware/wrap-formats))
-    (-> #'experimental-secret-routes
+    (-> #'authenticated-routes
         (wrap-routes middleware/wrap-csrf)
         (wrap-routes middleware/wrap-formats)
         (wrap-routes middleware/wrap-restricted))
+    (-> #'admin-routes
+        (wrap-routes middleware/wrap-csrf)
+        (wrap-routes middleware/wrap-formats)
+        (wrap-routes middleware/wrap-admin))
     (route/not-found
       (:body
         (error-page {:status 404

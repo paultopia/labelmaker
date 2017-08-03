@@ -105,3 +105,15 @@
             (dissoc :session)))
       wrap-context
       wrap-internal-error))
+
+;; for special admin pages.
+
+(defn administrator? [request]
+  (and
+   (boolean (:identity request))
+   (get-in request [:session :admin])))
+
+(defn wrap-admin [handler]
+  (restrict handler {:handler administrator?
+                     :on-error on-error}))
+
