@@ -10,6 +10,8 @@ I think the authentication structure will just be based on two routes on servers
 
 note: I need to make sure session tokens expire, and otherwise see recs here: http://www.lispcast.com/clojure-web-security
 
+library for session timeouts: https://github.com/ring-clojure/ring-session-timeout 
+
 (notesdump follows)
 
 Path forward:
