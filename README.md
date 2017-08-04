@@ -12,6 +12,8 @@ note: I need to make sure session tokens expire, and otherwise see recs here: ht
 
 library for session timeouts: https://github.com/ring-clojure/ring-session-timeout 
 
+cookie options: https://github.com/ring-clojure/ring/wiki/Cookies
+
 (notesdump follows)
 
 Path forward:
