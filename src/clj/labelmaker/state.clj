@@ -1,6 +1,8 @@
 (ns labelmaker.state
   (:require [labelmaker.db.core :as db]))
 
+;; currently untested.
+
 (defonce coding-queue (atom []))
 (defonce questions (atom []))
 
@@ -13,3 +15,17 @@
           (reset! coding-queue dbdocs)
           true)
         false))))
+
+(defn get-doc! []
+  (if (ensure-queue!)
+    (let [current-doc (peek @coding-queue)]
+      (swap! coding-queue pop)
+      current-doc)
+    nil))
+
+(defn get-questions!
+  (if (seq @questions)
+    @questions
+    (let [qs (db/get-codebook!)]
+      (reset! questions qs)
+      qs)))
