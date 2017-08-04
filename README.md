@@ -8,6 +8,8 @@ another possibility is permitting heroku deploy only... it looks like foo.heroku
 
 I think the authentication structure will just be based on two routes on serverside: root route will provide a login page at / and will be unauthenticated.  Then there will be an authenticated route that will actually have the reagent front-end.  and I can have a third, admin route down the road that will provide access both to admin tools and to the authenticated route.  but these choices will be on login page.
 
+note: I need to make sure session tokens expire, and otherwise see recs here: http://www.lispcast.com/clojure-web-security
+
 (notesdump follows)
 
 Path forward:
