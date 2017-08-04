@@ -23,7 +23,7 @@
       current-doc)
     nil))
 
-(defn get-questions!
+(defn get-questions! []
   (if (seq @questions)
     @questions
     (let [qs (db/get-codebook!)]
