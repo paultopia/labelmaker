@@ -10,6 +10,26 @@ I think the authentication structure will just be based on two routes on servers
 
 note: I need to make sure session tokens expire, and otherwise see recs here: http://www.lispcast.com/clojure-web-security
 
+it appears they do after a while?  (at least, they expired after being gone for like 12 hours for me.  but maybe that was a browser setting?  need real testing and not to be magic.)
+
+hugsql with conman works transactions nicely.  viz.:
+(use '[clojure.java.jdbc])
+(with-db-transaction [trans *db*] (get-codebook!))
+(use '[labelmaker.db.core])
+
+-- works
+
+how about conman?
+
+(require '[conman.core :as cm])
+nil
+(cm/with-transaction [foo] (get-codebook!))
+--- does not work
+
+but (cm/with-transaction [*db*] (get-codebook!)) does 
+
+
+
 library for session timeouts: https://github.com/ring-clojure/ring-session-timeout 
 
 cookie options: https://github.com/ring-clojure/ring/wiki/Cookies
