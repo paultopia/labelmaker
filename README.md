@@ -1,3 +1,5 @@
+**note**: development on this is temporarily halted.  Figuring out which features I want in a top-down fashion isn't going to work, so I'm using a [http://github.com/paultopia/newcontractcoding](hacked-together flask thing) on a live project that is going to completion; once that's done I'll have a much better idea of what needs building. (I'm regularly live-adding features to the flask version.) 
+
 New executive decision: I'm going to accept that the open-source and easy deploy version of this is going to be insecure.  There is no way to just spin up easy security given the difficulty of getting into https and such; users will need to be told that if they want a secure version they should use something they pay for. 
 
 the security goal for this will just be twofold:
