@@ -1,5 +1,8 @@
-Plan revisions 10-3-17: 
+**labelmaker** -- work in progress research document coding platform.
 
+**note 2018-02-04**: development on this is temporarily halted.  Figuring out which features I want in a top-down fashion isn't going to work, so I'm using a [hacked-together flask thing](http://github.com/paultopia/newcontractcoding) on a live project that is going to completion; once that's done I'll have a much better idea of what needs building. (I'm regularly live-adding features to the flask version.) 
+
+Plan revisions 10-3-17: 
 1.  It is going to be heroku-deploy only.  Managed databases are our friend, as is auto-provided https.
 
 2.  User will run a config step.  That config step will create and shove documents into a local database table, which will in turn push into heroku.  User can provide documents either via passing a directory or passing a json, no other options.  The config step will also take care of initializing a git repo, grabbing heroku cli, etc.  All they’ll have to do is run the config program and pass it a directory or a json + a list of questions and it’ll handle the rest.  
@@ -9,7 +12,6 @@ Plan revisions 10-3-17:
 4.  I’m still not totally set on the format for questions.  It’ll be either yaml or a custom format, yaml probably makes sense...
 
 
-**note**: development on this is temporarily halted.  Figuring out which features I want in a top-down fashion isn't going to work, so I'm using a [http://github.com/paultopia/newcontractcoding](hacked-together flask thing) on a live project that is going to completion; once that's done I'll have a much better idea of what needs building. (I'm regularly live-adding features to the flask version.) 
 
 New executive decision: I'm going to accept that the open-source and easy deploy version of this is going to be insecure.  There is no way to just spin up easy security given the difficulty of getting into https and such; users will need to be told that if they want a secure version they should use something they pay for. 
 
